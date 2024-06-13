@@ -31,8 +31,16 @@ Sends spoofed ARP packets to the victim and the gateway. Since this process need
 
 Once the attack is finished, sends normal arp packets to recover ARP table of the gateway and victim.
 
-## 3. Flow
+## 3. WorkFlow
 First you need to start the virtual-environment setting.
 ```
-git clone 
+git clone https://github.com/geonno/arp_spoofing_tool.git
+cd arp_spoofing_tool
+. ./bin/activate
 ```
+
+After that type ``python3 arp_spoofing.py``
+
+Then you will have to type in the target and gateway ip address. After that, the process will automatically poison the arp tables and wait for your keyboard interrupt signal. At this point you can sniff the packets going from victim's computer. I tried sniffing using **wire shark** and it worked well for me.
+
+If you are done sniffing, make the keyboard interrupt(cmd+c) and the arp table will be reocovered.
